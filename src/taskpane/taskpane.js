@@ -22,7 +22,10 @@ document.getElementById("create-table").onclick = createTable;
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("filter-table").onclick = filterTable;
+<<<<<<< HEAD
     document.getElementById("sort-table").onclick = sortTable;
+=======
+>>>>>>> 6b59400cb74693f6f7d74e03d5a11879366f7115
   }
 });
 
