@@ -22,6 +22,7 @@ document.getElementById("create-table").onclick = createTable;
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("filter-table").onclick = filterTable;
+    document.getElementById("sort-table").onclick = sortTable;
   }
 });
 
@@ -67,6 +68,29 @@ function filterTable() {
     var categoryFilter = expensesTable.columns.getItem('Category').filter;
     categoryFilter.applyValuesFilter(['Education', 'Groceries']);
 
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
+
+function sortTable() {
+  Excel.run(function (context) {
+
+    var currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
+    var expensesTable = currentWorksheet.tables.getItem('ExpensesTable');
+    var sortFields = [
+        {
+            key: 1,            // Merchant column
+            ascending: false,
+        }
+    ];
+
+    expensesTable.sort.apply(sortFields);
       return context.sync();
   })
   .catch(function (error) {
