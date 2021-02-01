@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { startValues } from '../data';
+import { startValues } from '../../data';
 
 export const createTable = () => {
   Excel.run(function(context) {
