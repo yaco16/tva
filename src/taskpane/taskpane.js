@@ -21,6 +21,7 @@ if (!Office.context.requirements.isSetSupported('ExcelApi', '1.7')) {
 document.getElementById("create-table").onclick = createTable;
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
+    document.getElementById("filter-table").onclick = filterTable;
   }
 });
 
@@ -47,6 +48,24 @@ expensesTable.rows.add(null /*add at the end*/, [
 expensesTable.columns.getItemAt(3).getRange().numberFormat = [['\u20AC#,##0.00']];
 expensesTable.getRange().format.autofitColumns();
 expensesTable.getRange().format.autofitRows();
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
+
+function filterTable() {
+  Excel.run(function (context) {
+
+    var currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
+    var expensesTable = currentWorksheet.tables.getItem('ExpensesTable');
+    var categoryFilter = expensesTable.columns.getItem('Category').filter;
+    categoryFilter.applyValuesFilter(['Education', 'Groceries']);
 
       return context.sync();
   })
