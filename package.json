@@ -1,0 +1,20 @@
+{
+  "name": "tva",
+  "version": "1.0.0",
+  "description": "Hello there,\\\r This project is about to automatically calculate VAT dued each month by my society.\\\r I want to use the Microsoft API Javascript to interact with Excel sheets and files.\\\r Wish me luck !",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaco16/tva.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaco16/tva/issues"
+  },
+  "homepage": "https://github.com/yaco16/tva#readme"
+}
