@@ -8,7 +8,7 @@
 // import "../../assets/icon-32.png";
 // import "../../assets/icon-80.png";
 
-import { createTable, filterTable, sortTable } from '../functions';
+import { createTable, filterTable, sortTable, addSheet, addData, selectAll, selectOne } from '../functions';
 
 /* global console, document, Excel, Office */
 
@@ -22,8 +22,12 @@ Office.onReady(info => {
     // Assign event handlers and other initialization logic.
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
-    document.getElementById("create-table").onclick = createTable;
-    document.getElementById("filter-table").onclick = filterTable;
-    document.getElementById("sort-table").onclick = sortTable;
+    // document.getElementById("create-table").onclick = createTable;
+    // document.getElementById("filter-table").onclick = filterTable;
+    // document.getElementById("sort-table").onclick = sortTable;
+    document.getElementById("add-sheet").onclick = addSheet;
+    // document.getElementById("add-data").onclick = addData;
+    document.getElementById("select-all").onclick = selectAll;
+    document.getElementById("select-one").onclick = selectOne;
   }
 });
