@@ -1,16 +1,5 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
-
-// images references in the manifest
-// import "../../assets/icon-16.png";
-// import "../../assets/icon-32.png";
-// import "../../assets/icon-80.png";
-
-import { createTable, filterTable, sortTable, addSheet, addData, selectAll, selectOne } from '../functions';
-
 /* global console, document, Excel, Office */
+import { addSheets, copyN } from '../functions/copyData';
 
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
@@ -22,12 +11,8 @@ Office.onReady(info => {
     // Assign event handlers and other initialization logic.
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
-    // document.getElementById("create-table").onclick = createTable;
-    // document.getElementById("filter-table").onclick = filterTable;
-    // document.getElementById("sort-table").onclick = sortTable;
-    document.getElementById("add-sheet").onclick = addSheet;
-    // document.getElementById("add-data").onclick = addData;
-    document.getElementById("select-all").onclick = selectAll;
-    document.getElementById("select-one").onclick = selectOne;
+
+    document.getElementById("add-sheet").onclick = addSheets;
+    document.getElementById("copyN").onclick = copyN;
   }
 });
