@@ -3,7 +3,6 @@
 export const addSheets = () => {//ajouter les feuilles de départ
   Excel.run(function (context) {
     var sheets = context.workbook.worksheets;
-    sheets.add("T9_bal_agee");
     sheets.add("Quadra_GL2021");
     sheets.add("Quadra_GL2020");
     sheets.add("Quadra_GL_groupe");
@@ -61,6 +60,7 @@ export const copyN_1 = (newCell) => {
 
 //supprimer le nom de la feuille
 export const justCell = (data) => {
+  console.log('data justCell:', data);
   return data.split("!").pop();
 }
 
@@ -76,9 +76,30 @@ export const decomposeCell = (data) => {
 
 //créer la nouvelle cellule où on se positionnera
 export const createCell = (data, newColumn, rowShift) => {
+  rowShift ? rowShift : rowShift = 0;
   // console.log('data:', data);
   const newRow = data.row + rowShift;
   // console.log('newRow:', newRow);
   const newRowToString = newRow.toString();
   return (newColumn+newRowToString);
+}
+
+export const getLastCell = (data, letter) => {
+  const justCell = data.split("!").pop();
+  const cellrowIsString = justCell.substring(1);
+  const cellrowIsParsed = parseInt(cellrowIsString, 10);
+  const cellColumn = justCell.substring(0, 1);
+  const newCell = { column: cellColumn,
+    row: cellrowIsParsed
+   };
+  const newRow = newCell.row;
+  const newRowToString = newRow.toString();
+  return (letter+newRowToString);
+
+
+  // const decomposedCell = decomposeCell(justCell);
+  // console.log('decomposedCell:', decomposedCell);
+  // const createdCell = createCell(decomposedCell, letter);
+  // console.log('createdCell:', createdCell);
+  // return createdCell;
 }
