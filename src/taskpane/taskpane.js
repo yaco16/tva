@@ -1,6 +1,6 @@
 /* global console, document, Excel, Office */
 import { addSheets, copyN } from '../functions/copyData';
-import { copyColumns, calcul } from '../functions/calcul';
+import { process, calcul } from '../functions/calcul';
 
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
@@ -15,7 +15,7 @@ Office.onReady(info => {
 
     document.getElementById("add-sheet").onclick = addSheets;
     document.getElementById("copyN").onclick = copyN;
-    document.getElementById("copyColumns").onclick = copyColumns;
+    document.getElementById("copyColumns").onclick = process;
     document.getElementById("calcul").onclick = calcul;
   }
 });
