@@ -7,7 +7,7 @@
 
 import { getLastCell} from './copyData';
 
-export const copyColumns = () => {
+export const copyColumns = () => { //recopier les colonnes qui m'intéressent
   Excel.run(function (context) {
     //sélectionner toutes les cellules used du journal 2019-2020
     var quadraGroupe = context.workbook.worksheets.getItem("Quadra_GL_groupe");
@@ -26,6 +26,10 @@ export const copyColumns = () => {
     calcul.getRange("C1").copyFrom(column3);
     calcul.getRange("D1").copyFrom(column4);
     calcul.getRange("F1").copyFrom(column5);
+
+    //adapter la largeur de la colonne A
+    calcul.getRange("A:A").format.autofitColumns();
+
     return context.sync()
   })
 }
